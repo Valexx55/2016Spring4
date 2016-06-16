@@ -7,11 +7,11 @@ var xmlHttp = new XMLHttpRequest();
 
 function llamadaRest()
 {
-	var name = document.getElementById("nombre").value;
+	var name = document.getElementById("raza").value;
 	
 	xmlHttp.onreadystatechange = procesarEvento;
-	xmlHttp.open('GET', '../persona/'+name, true); 
-	xmlHttp.setRequestHeader('Accept', 'application/json');
+	xmlHttp.open('GET', '../perro/'+name, true); 
+	xmlHttp.setRequestHeader('Accept', 'application/xml');
 	xmlHttp.send(null); //el cuerpo va vacío
 	
 }
@@ -47,7 +47,7 @@ function muestraPersona(texto)
 </head>
 <body>
 
-	<label for="nombre">Nombre</label><input type = "text" name = "nombre" id="nombre"/>
-	<input type="button" onclick="llamadaRest();" value="GET Persona"></input>
+	<label for="raza">Raza</label><input type = "text" name = "raza" id="raza"/>
+	<input type="button" onclick="llamadaRest();" value="GET Perro"></input>
 </body>
 </html>

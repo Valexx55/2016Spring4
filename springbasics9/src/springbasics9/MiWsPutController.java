@@ -20,7 +20,7 @@ public class MiWsPutController {
 		return p;
 	}
 	
-	@RequestMapping(value = "/persona/{nombrePersona}", method=RequestMethod.GET)
+	@RequestMapping(value = "/persona/{nombrePersona}", method=RequestMethod.GET, produces="application/json" )
 	public Persona getOrder(@PathVariable String nombrePersona){
 		Persona p = null;
 		
@@ -30,8 +30,22 @@ public class MiWsPutController {
 		p.setNombre(nombrePersona);
 		
 		return p;
-	//fetch order
 	}
+	
+	
+	@RequestMapping(value = "/perro/{raza}", method=RequestMethod.GET, produces="application/xml" )
+	public Perro getPerro(@PathVariable String raza){
+		Perro p = null;
+		
+		//TODO GET --> recuperaría la información de la persona con ése nombre
+		
+		p = new Perro();
+		p.setRaza(raza);
+		
+		return p;
+	}
+	
+	
 	
 	
 
