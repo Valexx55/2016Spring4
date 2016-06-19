@@ -9,6 +9,7 @@ public interface UsuarioServiceInterface {
 	boolean existeUsuario (LoginUsuario login_usuario);
 	UsuarioE existeCorreoUsuario(EmailOlvido email_olvido);
 	void recordarDatos (UsuarioE usuarioE);
+	UsuarioE leerUsuario (Object id);
 	
 
 }

@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import org.hibernate.service.spi.InjectService;
+import org.hibernate.validator.internal.util.privilegedactions.GetClassLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.val.persistence.entity.UsuarioE;
@@ -23,20 +26,11 @@ import com.val.persistence.interfaces.UsuarioDaoInterface;
 public class UsuarioDAO extends GenericDAO implements UsuarioDaoInterface {
 
 	
+	
 	@Override
 	public boolean existeUsuario(UsuarioE entity_usuario) 
 	{
 		boolean bdev = false;
-		
-			/*EntityTransaction et = entityManager.getTransaction(); 
-			
-			et.begin();
-			//negocio
-			et.commit();//si todo ha ido bien
-			et.rollback();//si algo ha fallado -en la captura de a excepción
-			
-			De no existir @transactional, debería obtener gestionar esto manualmente, pasandole la transacción a todos los DAOS que intervienen en la transacción --> Lío : AOP facilita
-			*/
 		
 			Query consulta = entityManager.createQuery("SELECT u FROM usuario u WHERE u.nombre = :nombre and u.pwd = :pwd");
 			consulta.setParameter("nombre", entity_usuario.getNombre());
@@ -63,6 +57,12 @@ public class UsuarioDAO extends GenericDAO implements UsuarioDaoInterface {
 			
 			
 		return usuarioe;
+	}
+
+
+	@Override
+	Class getClase() {
+		return UsuarioE.class;
 	}
 
 

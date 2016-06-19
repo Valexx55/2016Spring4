@@ -43,4 +43,14 @@ public class UsuarioService implements UsuarioServiceInterface {
 		return usuarioDAO.existeMailUsuario(e_usuario);
 	}
 
+	@Override
+	@Transactional
+	public UsuarioE leerUsuario(Object id) {
+		UsuarioE ue = null;
+		
+		ue = (UsuarioE) usuarioDAO.read(id);
+		
+		return ue;
+	}
+
 }
