@@ -48,9 +48,19 @@ public class UsuarioService implements UsuarioServiceInterface {
 	public UsuarioE leerUsuario(Object id) {
 		UsuarioE ue = null;
 		
-		ue = (UsuarioE) usuarioDAO.read(id);
+			ue = (UsuarioE) usuarioDAO.read(id);
 		
 		return ue;
+	}
+	
+	@Override
+	@Transactional
+	public boolean borrarUsuario(Object id) {
+		boolean vdev = false;
+
+			vdev = usuarioDAO.delete(id);
+		
+		return vdev;
 	}
 
 }

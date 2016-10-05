@@ -31,7 +31,23 @@ public class LocalizaUsuario {
 		
 		p = usuario_service.leerUsuario(Integer.parseInt(id));
 		
+		
 		log.debug("USUARIO = " + p);
+		
+		return p;
+	}	
+	
+	@RequestMapping(value = "/usuario/json/{id}", method=RequestMethod.DELETE, produces="application/json" )
+	@ResponseBody
+	public UsuarioE deleteUsuarioJSON(@PathVariable String id){
+		UsuarioE p = null;
+		
+		//TODO GET --> recuperaría la información de la persona con ése nombre
+		
+			p = usuario_service.leerUsuario(Integer.parseInt(id));
+			usuario_service.borrarUsuario (id);
+			
+			log.debug("USUARIO = " + p);
 		
 		return p;
 	}	

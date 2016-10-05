@@ -3,6 +3,7 @@ package com.val.persistence.dao;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -28,9 +29,17 @@ public abstract class GenericDAO implements CRUD {
 	}
 
 	@Override
-	public boolean delete(Object emp) {
+	public boolean delete(Object id) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		/**tb puedo optar por entityManager.remove(entity); **/
+		
+		
+		Integer idint = Integer.valueOf(id.toString());
+		Query query = entityManager.createQuery("DELETE from usuario u WHERE u.idUsuario= :idUsuario");
+	   query.setParameter("idUsuario", idint);
+		
+		return (query.executeUpdate()==1);
 	}
 
 	@Override

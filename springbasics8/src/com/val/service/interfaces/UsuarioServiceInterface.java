@@ -10,6 +10,7 @@ public interface UsuarioServiceInterface {
 	UsuarioE existeCorreoUsuario(EmailOlvido email_olvido);
 	void recordarDatos (UsuarioE usuarioE);
 	UsuarioE leerUsuario (Object id);
+	boolean borrarUsuario (Object id);
 	
 
 }
